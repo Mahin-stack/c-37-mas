@@ -1,20 +1,24 @@
-
 var database
 var drawing=[];
 var currentPath = [];
 var isDrawing =false
 var path
-var saveButton
-
+var pen
+var name
 
 function setup() {
-  canvas=createCanvas(500,400);
+  canvas=createCanvas(displayWidth-20,displayHeight-60);
+  database = firebase.database(); 
   canvas.mousePressed(startPath);
  canvas.mouseReleased(endPath);
- saveButton = select('#saveButton')
- database = firebase.database(); 
- input = createInput('Name');
+ canvas.parent(canvascontainer)
+
+ //var saveButton = select('#saveButton');
+
+  input = createInput('Name');
  button = createButton('Play');
+pen = createButton('Save');
+pen.mousePressed(saveDrawing)
 
 }
 
@@ -29,15 +33,17 @@ function endPath(){
 
 }
 function draw() {
-  background("red"); 
-  fill("black");
-  textSize(18);
-  text("CANVAS",150,50)
-  input.position(220,220);
-  button.position(220,310);
+  background(0); 
+  fill("red");
+  textSize(50);
+  strokeWeight(15)
+  text("My Awsome Paint Workshop...",displayWidth/2-320,displayHeight/2-300)
+  input.position(displayWidth/2-300,displayHeight/2+200);
+  button.position(displayWidth/2-100,displayHeight/2+250);
   button.mousePressed(()=>{
   input.hide();
   button.hide();
+//  pen.hide();
    
 
 
@@ -72,11 +78,9 @@ function draw() {
 function saveDrawing(){
   var ref = database.ref('drawings');
   var data = {
-    name : "Code",
+    name : name,
     drawing: drawing
   }
+  var result = ref.push(data)
 }
-
-
-
 

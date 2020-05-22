@@ -8,8 +8,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
     
 <script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
+ const firebaseConfig = {
     apiKey: "AIzaSyARNagVgE8SRJC5mCXN9wKNU_mt5pCXqu0",
     authDomain: "paint-e59e5.firebaseapp.com",
     databaseURL: "https://paint-e59e5.firebaseio.com",
@@ -18,7 +17,6 @@
     messagingSenderId: "100971551306",
     appId: "1:100971551306:web:ff01b882682ead8ef6e4b3"
   };
-  // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 </script>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -26,9 +24,12 @@
     
   </head>
   <body>
-      <script src="sketch.js"></script>
-  
 
+    
+    <script src="sketch.js"></script>
+
+    <div id = "canvascontainer"></div>
+    
 </body></html>
 
 
