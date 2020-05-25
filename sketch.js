@@ -19,7 +19,9 @@ function setup() {
  button = createButton('Play');
 pen = createButton('Save');
 pen.mousePressed(saveDrawing)
-
+//new;25/5
+clr = createButton('Clear');
+clr.mousePressed(endDraw);
 }
 
 function startPath(){
@@ -82,5 +84,10 @@ function saveDrawing(){
     drawing: drawing
   }
   var result = ref.push(data)
+}
+
+function endDraw(){
+  currentPath =[]
+  drawing =[]
 }
 
